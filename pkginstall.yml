@@ -1,0 +1,24 @@
+---
+- hosts: all
+  tasks:
+  - name: List of Package installation
+    apt:
+      name: "{{ packages }}"
+    vars:
+      packages:
+        - python-apt
+        - vim
+        - screen
+  - name: nginx installation
+    apt:
+      name: nginx
+      state: present
+  - name: nginx index.html update
+    copy:
+      content: "<marquee> Hello!! I have updated </marquee>"
+      dest: /var/www/html/index.nginx-debian.html
+  - name: nginx start and enabled
+    service:
+      name: nginx
+      state: started
+      enabled: yes
