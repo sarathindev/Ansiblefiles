@@ -1,0 +1,11 @@
+---
+- hosts: nodes
+  tasks:
+  - name: Creating user Sandeep
+    user:
+      name: Sandeep
+      state: present
+  - name: deleting user aidu
+    user: 
+      name: aidu 
+      state: absent

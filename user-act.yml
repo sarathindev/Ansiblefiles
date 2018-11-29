@@ -1,0 +1,9 @@
+--- 
+- hosts: nodes 
+  tasks:
+    - name: Creating a user name sandeep 
+      user:
+        name: sandeep 
+        state: present
+    - name: Creating other user name Naidu 
+        user: name= Naidu state= present

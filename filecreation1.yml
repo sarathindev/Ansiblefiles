@@ -1,0 +1,11 @@
+---
+- hosts: managednode.example.com
+  tasks:
+  - name: File link creation
+    file:
+      src: /var/tmp/{{item.src}}
+      dest:  /var/tmp/{{item.dest}}
+      state: link 
+    with_items:
+      - { src: 'x', dest: 'y' }
+      - { src: 'a', dest: 'b' }
