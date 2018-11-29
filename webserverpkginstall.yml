@@ -1,0 +1,18 @@
+---
+- hosts: all
+  tasks:
+    - name: package installation with loops for {{ ansible-hostname }}
+      apt:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - default-jdk
+        - gcc
+        - ntp
+        - vim
+        - nano
+      register: endresult
+    - name: Keep info ready for review or debug
+      debug:
+        var=endresult
+    - local_action: copy content={{ endresult }} dest=/var/tmp/packageinstallplaybook.out

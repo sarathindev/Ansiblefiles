@@ -1,0 +1,17 @@
+---
+- hosts: all
+  tasks:
+  - name: Update line in nginx config
+    lineinfile:
+      path: /etc/nginx/sites-available/default
+      regex: "listen 80 default_server;"
+      line: "listen 81 default_server;"
+  - name: Update second line
+    lineinfile:
+      path: /etc/nginx/sites-available/default
+      regex: "listen [::]:80 default_server;"
+      line: "listen [::]:81 default_server;"
+  - name: restart service
+    service: 
+      name: nginx
+      state: restarted
